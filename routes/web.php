@@ -21,5 +21,7 @@ Route::get('/',function(){
     return view('welcome');
 });
 
-Route::get('/blog',[PostController::class,'index']);
 Route::get('/invoke',HomeController::class);
+
+// resource
+Route::resource('/blog',PostController::class);
