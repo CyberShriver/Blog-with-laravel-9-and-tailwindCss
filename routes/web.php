@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\testController;
@@ -45,6 +46,10 @@ Route::prefix('/blog')->group(function(){
     Route::delete('/{id}',[PostController::class,'destroy'])->name('blog.destroy');
 
 });
+
+// fallback
+
+Route::fallback(FallbackController::class);
 
 // multiple HTTP verbs
 // Route::match(['GET','POST'],'/blog',[PostController::class,'index']);

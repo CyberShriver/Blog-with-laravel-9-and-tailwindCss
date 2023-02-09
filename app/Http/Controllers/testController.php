@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class testController extends Controller
 {
-    public function indexBlog(){
-        return view('blog.index');
+    public function index(){
+        return view('index');
     }
 }
