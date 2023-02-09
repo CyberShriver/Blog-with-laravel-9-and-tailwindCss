@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,5 @@ Route::get('/',function(){
     return view('welcome');
 });
 
-Route::get('/blog',[testController::class,'index']);
-
+Route::get('/blog',[PostController::class,'index']);
 Route::get('/invoke',HomeController::class);
