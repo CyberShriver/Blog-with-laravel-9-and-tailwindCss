@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>fallback page doesn't exist</h1>
+    <h1>Fallback page doesn't exist</h1>
 </body>
 </html>
