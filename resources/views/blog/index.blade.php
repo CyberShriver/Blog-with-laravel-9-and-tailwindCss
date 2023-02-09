@@ -7,6 +7,9 @@
     <title>blog</title>
 </head>
 <body>
+    <nav>
+        <a href={{ route('blog.show',['id'=>1]) }}>Goto Blog</a>
+    </nav>
     <h1>Programming not easy at the begining</h1>
     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, at aspernatur delectus quisquam doloribus, qui quibusdam iusto consequatur nisi,
          sed ipsum non ratione. Atque, dolores nisi possimus velit distinctio at?</div>
