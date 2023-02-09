@@ -28,7 +28,24 @@ Route::get('/invoke',HomeController::class);
 
 //GET
 Route::get('/blog',[PostController::class,'index']);
-Route::get('/blog/{id}',[PostController::class,'show']);
+// Route::get('/blog/{id}',[PostController::class,'show']);
+
+// regular expression
+// Route::get('/blog/{id}',[PostController::class,'show'])
+// ->where('id','[0-9]+');
+
+// Route::get('/blog/{name}',[PostController::class,'show'])
+// ->where('name','[a-z]');
+
+// Route::get('/blog/{name}',[PostController::class,'show'])
+// ->whereAlpha('name');
+
+// Route::get('/blog/{id}',[PostController::class,'show'])
+// ->whereNumber('id');
+
+Route::get('/blog/{id}/{name}',[PostController::class,'show'])
+->whereNumber('id')
+->whereAlpha('name');
 
 // POST
 Route::get('/blog/create',[PostController::class,'create']);
