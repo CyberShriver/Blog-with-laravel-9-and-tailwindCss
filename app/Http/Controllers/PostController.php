@@ -59,8 +59,17 @@ class PostController extends Controller
         // $posts->is_published=$request->is_published==="on";
         // $posts->save();
 
-        // insert using eloquent way
+        // validate the data
 
+        $request->validate([
+            'title'=>'required|unique:posts|max:255',
+            'body'=>'required',
+            'excerpt'=>'required',
+            'image'=>['required','mimes:jpg,png,jpeg','max:5048'],
+            'min_to_read'=>'min:1|max:60'
+        ]);
+
+        // insert using eloquent way
         Post::create([
             'title'=>$request->title,
             'body'=>$request->body,
