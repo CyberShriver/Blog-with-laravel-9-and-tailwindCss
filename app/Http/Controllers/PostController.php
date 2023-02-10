@@ -6,6 +6,8 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Ramsey\Uuid\v1;
+
 class PostController extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class PostController extends Controller
         // CHAIN METHOD
 
         return view('blog.index',[
-            'posts'=>Post::get()
+            'posts'=>Post::orderBy('id','desc')->get()
         ]);
     }
 
@@ -46,14 +48,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $posts=new Post();
-        $posts->title=$request->title;
-        $posts->body=$request->body;
-        $posts->min_to_read=$request->min_to_read;
-        $posts->excerpt=$request->excerpt;
-        $posts->image_path="temporary";
-        $posts->is_published=$request->is_published==="on";
-        $posts->save();
+        // insert using php oop way
+
+        // $posts=new Post();
+        // $posts->title=$request->title;
+        // $posts->body=$request->body;
+        // $posts->min_to_read=$request->min_to_read;
+        // $posts->excerpt=$request->excerpt;
+        // $posts->image_path="temporary";
+        // $posts->is_published=$request->is_published==="on";
+        // $posts->save();
+
+        // insert using eloquent way
+
+        Post::create([
+            'title'=>$request->title,
+            'body'=>$request->body,
+            'min_to_read'=>$request->min_to_read,
+            'excerpt'=>$request->excerpt,
+            'is_published'=>$request->is_published==="on",
+            'image_path'=>'temporary',
+        ]);
+        
         return redirect(route('blog.index'));
     }
 

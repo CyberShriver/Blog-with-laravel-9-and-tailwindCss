@@ -9,6 +9,10 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+        'title','body','excerpt','min_to_read','is_published','image_path'
+    ];
+
     // protected $table='posts';
     // protected $primaryKey='title';
     // protected $timestamps=false;
