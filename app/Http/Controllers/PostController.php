@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,9 +23,8 @@ class PostController extends Controller
 
         // CHAIN METHOD
 
-
         return view('blog.index',[
-            'posts'=>DB::table('posts')->get()
+            'posts'=>Post::get()
         ]);
     }
 
@@ -58,7 +58,10 @@ class PostController extends Controller
     public function show($id)
     {
         //
-        return $id;
+
+        return view('blog.show',[
+            'post'=>Post::findOrFail($id)
+        ]);
     }
 
     /**
