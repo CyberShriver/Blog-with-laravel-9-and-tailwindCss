@@ -67,9 +67,9 @@ class PostController extends Controller
             'min_to_read'=>$request->min_to_read,
             'excerpt'=>$request->excerpt,
             'is_published'=>$request->is_published==="on",
-            'image_path'=>'temporary',
+            'image_path'=>$this->storeImage($request),
         ]);
-        
+
         return redirect(route('blog.index'));
     }
 
@@ -120,5 +120,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // image upload method
+    private function storeImage($request){
+        $newImageName=uniqid().'_'.$request->title.'.'.$request->image->extension();
+        return $request->image->move(public_path('images'),$newImageName);
     }
 }
