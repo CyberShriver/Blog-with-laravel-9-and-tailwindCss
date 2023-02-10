@@ -22,9 +22,10 @@ class PostController extends Controller
 
         // CHAIN METHOD
 
-        $posts=DB::table('posts')->get();
 
-        return view('blog.index',compact('posts'));
+        return view('blog.index',[
+            'posts'=>DB::table('posts')->get()
+        ]);
     }
 
     /**
