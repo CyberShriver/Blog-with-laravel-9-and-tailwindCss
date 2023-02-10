@@ -22,13 +22,9 @@ class PostController extends Controller
 
         // CHAIN METHOD
 
-        // $posts=DB::table('posts')
-        //         ->whereNotNull('excerpt')
-        //         ->get();
+        $posts=DB::table('posts')->find(2);
 
-        // dd($posts);
-
-        return view('blog.index');
+        return view('blog.index')->with('posts',$posts);
     }
 
     /**

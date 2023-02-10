@@ -16,5 +16,7 @@
          sed ipsum non ratione. Atque, dolores nisi possimus velit distinctio at?</div>
 
          {{-- <q>{{$author}}</q> --}}
+         <div class="text-center font-bold pt-5">lists of posts</div>
+         <div>{{$posts->title}}</div>
 </body>
 </html>
