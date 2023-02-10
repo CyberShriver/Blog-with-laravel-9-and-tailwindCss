@@ -31,11 +31,11 @@ Route::get('/invoke',HomeController::class);
 
 Route::prefix('/blog')->group(function(){
 
+    Route::get('/create',[PostController::class,'create'])->name('blog.create');
     Route::get('/',[PostController::class,'index'])->name('blog.index');
 
     Route::get('/{id}',[PostController::class,'show'])->name('blog.show');
 
-    Route::get('/create',[PostController::class,'create'])->name('blog.create');
 
     Route::post('/',[PostController::class,'store'])->name('blog.store');
 

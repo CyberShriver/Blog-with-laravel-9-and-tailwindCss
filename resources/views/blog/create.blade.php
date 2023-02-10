@@ -21,13 +21,14 @@
             action="{{route('blog.store')}}"
             method="Post"
             enctype="multipart/form-data">
+            @csrf
     
             <label for="is_published" class="text-gray-500 text-2xl">
                 Is Published
             </label>
             <input
                 type="checkbox"
-                class="bg-transparent block border-b-2 text-2xl outline-none"
+                class="bg-transparent inline border-b-2 text-2xl outline-none"
                 name="is_published">
     
             <input

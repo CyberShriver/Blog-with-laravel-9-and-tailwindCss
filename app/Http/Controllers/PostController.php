@@ -46,7 +46,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $posts=new Post();
+        $posts->title=$request->title;
+        $posts->body=$request->body;
+        $posts->min_to_read=$request->min_to_read;
+        $posts->excerpt=$request->excerpt;
+        $posts->image_path="temporary";
+        $posts->is_published=$request->is_published==="on";
+        $posts->save();
+        return redirect(route('blog.index'));
     }
 
     /**
