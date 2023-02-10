@@ -18,25 +18,15 @@
           {{-- <q>{{$author}}</q>  --}}
          <div class="text-center font-bold pt-5 underline">lists of posts</div>
 
-         <div>
+         <ol class="text-center">
 
-            @if (count($posts)>100)
-
-            <div>
-                {{dd($posts)}}  
-            </div>
-
-            @elseif (count($posts)==100)
-            
-            <h1 class="text-center text-red-600 font-bold  mt-20">You have 100 posts</h1>
-
-            @else
-
-            <h1>Opps sorry none condition is true</h1>
+            @forelse ($posts as $post)
+                <li>{{$post->title}}</li>
+            @empty
                 
-            @endif
+            @endforelse
 
 
-         </div>
+         </ol>
 </body>
 </html>
