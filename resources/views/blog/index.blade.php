@@ -8,17 +8,35 @@
     <title>blog</title>
 </head>
 <body class="container mx-auto px-12">
-    {{-- <nav>
+    <nav>
         <a href={{ route('blog.show',['id'=>1]) }} @class(['p-4', 'font-bold' => true])>Goto Blog</a>
     </nav>
     <h1 class=" text-center text-2xl font-bold capitalize p-4">Programming not easy at the begining</h1>
     <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, at aspernatur delectus quisquam doloribus, qui quibusdam iusto consequatur nisi,
-         sed ipsum non ratione. Atque, dolores nisi possimus velit distinctio at?</div> --}}
+         sed ipsum non ratione. Atque, dolores nisi possimus velit distinctio at?</div> 
 
-         {{-- <q>{{$author}}</q> --}}
-         {{-- <div class="text-center font-bold pt-5 underline">lists of posts</div> --}}
-         {{-- <div class=" list-disc">{{$posts->title}}</div> --}}
+          {{-- <q>{{$author}}</q>  --}}
+         <div class="text-center font-bold pt-5 underline">lists of posts</div>
 
-         {{ dump($posts)}}
+         <div>
+
+            @if (count($posts)>100)
+
+            <div>
+                {{dd($posts)}}  
+            </div>
+
+            @elseif (count($posts)==100)
+            
+            <h1 class="text-center text-red-600 font-bold  mt-20">You have 100 posts</h1>
+
+            @else
+
+            <h1>Opps sorry none condition is true</h1>
+                
+            @endif
+
+
+         </div>
 </body>
 </html>
