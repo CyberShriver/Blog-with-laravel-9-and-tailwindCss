@@ -119,13 +119,25 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validate the data
+
+        $request->validate([
+            'title'=>'required|max:255|unique:posts,title,'.$id,
+            'body'=>'required',
+            'excerpt'=>'required',
+            'image'=>['mimes:jpg,png,jpeg','max:5048'],
+            'min_to_read'=>'min:1|max:60'
+        ]);
+
+        // update using eloquent
+
         Post::where('id',$id)->update(
             $request->except([
                 '_token','_method'
             ])
         );
 
-            return redirect(route('blog.index'));
+        return redirect(route('blog.index'));
     }
 
     /**
