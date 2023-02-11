@@ -148,7 +148,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+        return redirect(route('blog.index'))->with('message',"Post has been deleted.");
     }
 
     // image upload method

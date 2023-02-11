@@ -24,6 +24,22 @@
         </div>
     </div>
 
+    {{-- fall back message when we delete post --}}
+    @if (session()->has('message'))
+        <div class="pb-8 w-4/5 mx-auto">
+
+                <div class="text-white rounded-t font-bold bg-red-500 px-4 py-2">
+                    Warning
+                </div>
+                <div class="rounded-b text-red-700 bg-red-200 border border-t-1 px-4 py-2">
+                    {{session()->get('message')}}
+                </div>
+
+        </div>
+
+    @endif
+
+
     @foreach($posts as $post)
         <div class="w-4/5 mx-auto pb-10">
             <div class="bg-white pt-10 rounded-lg drop-shadow-2xl sm:basis-3/4 basis-full sm:mr-8 pb-10 sm:pb-0">
@@ -46,8 +62,19 @@
                         </a>
                        on 10-02-2023
                     </span>
-                    <div class=" primary-btn text-base px-4 mt-5 w-max bg-green-300 text-white rounded-md transition-all hover:bg-green-400">
-                        <a href="{{route('blog.edit',$post->id)}}">Edit</a>
+                    <div class="flex gap-5">
+                        <div class=" primary-btn text-base px-4 mt-5 w-max bg-green-300 text-white rounded-md transition-all hover:bg-green-400">
+                            <a href="{{route('blog.edit',$post->id)}}">Edit</a>
+                        </div>
+                        <div>
+                            <form action="{{route('blog.destroy',$post->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="primary-btn text-base px-4 mt-5 w-max bg-red-300 text-white rounded-md transition-all hover:bg-red-400">Delete</button>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
