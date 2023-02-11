@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,7 +47,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
         // insert using php oop way
 
@@ -61,13 +62,7 @@ class PostController extends Controller
 
         // validate the data
 
-        $request->validate([
-            'title'=>'required|unique:posts|max:255',
-            'body'=>'required',
-            'excerpt'=>'required',
-            'image'=>['required','mimes:jpg,png,jpeg','max:5048'],
-            'min_to_read'=>'min:1|max:60'
-        ]);
+        $request->validated();
 
         // insert using eloquent way
         Post::create([
@@ -117,17 +112,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostFormRequest $request, $id)
     {
         // validate the data
 
-        $request->validate([
-            'title'=>'required|max:255|unique:posts,title,'.$id,
-            'body'=>'required',
-            'excerpt'=>'required',
-            'image'=>['mimes:jpg,png,jpeg','max:5048'],
-            'min_to_read'=>'min:1|max:60'
-        ]);
+        $request->validated();
 
         // update using eloquent
 
