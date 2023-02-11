@@ -49,7 +49,7 @@
             </label>
             <input
                 type="checkbox"
-                {{$post->is_piblished=true ? 'checked' : ''}}
+                {{$post->is_published=== true ? 'checked' : ''}}
                 class="bg-transparent inline border-b-2 text-2xl outline-none"
                 name="is_published">
             <input
