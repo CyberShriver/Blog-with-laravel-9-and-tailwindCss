@@ -105,7 +105,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+       return view('blog.edit',[
+        'post'=>Post::where('id',$id)->first()
+       ]);
     }
 
     /**
@@ -117,7 +119,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Post::where('id',$id)->update([
+
+            'title'=>$request->title,
+            'body'=>$request->body,
+            'min_to_read'=>$request->min_to_read,
+            'excerpt'=>$request->excerpt,
+            'is_published'=>$request->is_published==="on",
+            // 'image_path'=>$request->image_path,           
+            ]);
+
+            return redirect(route('blog.index'));
     }
 
     /**

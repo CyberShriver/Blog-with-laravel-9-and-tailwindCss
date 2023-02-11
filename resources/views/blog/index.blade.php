@@ -34,18 +34,21 @@
                         </a>
                     </h2>
 
-                    <p class="text-gray-900 text-lg py-8 w-full break-words">
+                    <p class="text-gray-900 text-lg py-5 w-full break-words">
                         {{ $post->excerpt }}
                     </p>
 
                     <span class="text-gray-500 text-sm sm:text-base">
-                    Made by:
+                       Made by:
                         <a href=""
                            class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all">
                             Patrick shriver
                         </a>
-                    on 10-02-2023
-                </span>
+                       on 10-02-2023
+                    </span>
+                    <div class=" primary-btn text-base px-4 mt-5 w-max bg-green-300 text-white rounded-md transition-all hover:bg-green-400">
+                        <a href="{{route('blog.edit',$post->id)}}">Edit</a>
+                    </div>
                 </div>
             </div>
         </div>
