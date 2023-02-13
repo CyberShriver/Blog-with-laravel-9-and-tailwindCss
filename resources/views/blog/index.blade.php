@@ -9,12 +9,14 @@
 </head>
 <body class="w-full h-full bg-gray-100">
     <div class="w-4/5 mx-auto">
-        <div class="text-center pt-20">
+        <div class="text-center pt-20 pb-5">
             <h1 class="text-3xl text-gray-700">
                 All Articles
             </h1>
             <hr class="border border-1 border-gray-300 mt-10">
         </div>
+
+        @if (Auth::user())
 
         <div class="py-10 sm:py-20">
             <a class="primary-btn inline text-base sm:text-xl bg-green-500 py-4 px-4 shadow-xl rounded-full transition-all hover:bg-green-400"
@@ -22,6 +24,9 @@
                 New Article
             </a>
         </div>
+
+        @endif
+       
     </div>
 
     {{-- fall back message when we delete post --}}
@@ -62,6 +67,9 @@
                         </a>
                        on {{$post->updated_at->format('d-m-Y')}}
                     </span>
+
+                    @if (Auth::id()===$post->user->id)
+
                     <div class="flex gap-5">
                         <div class=" primary-btn text-base px-4 mt-5 w-max bg-green-300 text-white rounded-md transition-all hover:bg-green-400">
                             <a href="{{route('blog.edit',$post->id)}}">Edit</a>
@@ -76,6 +84,9 @@
                             </form>
                         </div>
                     </div>
+                        
+                    @endif
+                    
                 </div>
             </div>
         </div>

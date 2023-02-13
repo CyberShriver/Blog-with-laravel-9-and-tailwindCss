@@ -12,6 +12,10 @@ use function Ramsey\Uuid\v1;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create','edit','update','destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
