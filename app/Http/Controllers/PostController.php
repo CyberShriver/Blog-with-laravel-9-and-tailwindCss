@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function Ramsey\Uuid\v1;
@@ -65,13 +66,21 @@ class PostController extends Controller
         $request->validated();
 
         // insert using eloquent way
-        Post::create([
+       $post=Post::create([
+            'user_id'=>Auth::id(),
             'title'=>$request->title,
             'body'=>$request->body,
             'min_to_read'=>$request->min_to_read,
             'excerpt'=>$request->excerpt,
             'is_published'=>$request->is_published==="on",
             'image_path'=>$this->storeImage($request),
+        ]);
+
+        $post->meta()->create([
+            'post_id'=>$post->id,
+            'meta_description'=>$request->meta_description,
+            'meta_robots'=>$request->meta_robots,
+            'meta_keywords'=>$request->meta_keywords
         ]);
 
         return redirect(route('blog.index'));
