@@ -22,7 +22,8 @@ class PostFactory extends Factory
             'body'=>$this->faker->text(),
             'is_published'=>1,
             'min_to_read'=>$this->faker->numberBetween(1,10),
-            'image_path'=>$this->faker->imageUrl(640,480)
+            'image_path'=>$this->faker->imageUrl(640,480),
+            'user_id'=>1
         ];
     }
 }
