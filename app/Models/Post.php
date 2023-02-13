@@ -13,6 +13,10 @@ class Post extends Model
         'title','body','excerpt','min_to_read','is_published','image_path'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     // protected $table='posts';
     // protected $primaryKey='title';
     // protected $timestamps=false;

@@ -58,9 +58,9 @@
                        Made by:
                         <a href=""
                            class="text-green-500 italic hover:text-green-400 hover:border-b-2 border-green-400 pb-3 transition-all">
-                            Patrick shriver
+                            {{$post->user->name}}
                         </a>
-                       on 10-02-2023
+                       on {{$post->updated_at->format('d-m-Y')}}
                     </span>
                     <div class="flex gap-5">
                         <div class=" primary-btn text-base px-4 mt-5 w-max bg-green-300 text-white rounded-md transition-all hover:bg-green-400">
